@@ -1,0 +1,7 @@
+.ipynb_checkpoints
+*.pyc 
+
+
+
+# some large pickle files
+*/tutorials/lecture_02/pretrained_model/
