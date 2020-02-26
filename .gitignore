@@ -3,5 +3,5 @@
 
 
 
-# some large pickle files
-*/tutorials/lecture_02/pretrained_model/
+# Ignore some large pickle files
+*tutorials/lecture_02/pretrained_model/
