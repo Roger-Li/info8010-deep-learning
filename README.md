@@ -53,5 +53,6 @@ Your report should be submitted  by **April 3, 2020 at 23:59** on the [submissio
 
 - [2018-2019](https://github.com/glouppe/info8010-deep-learning/tree/v2-info8010-2019)
 
-## [Notes](notes.md) (Added by Roger-Li)
+## Notes 
+[Notes](notes.md) added by Roger-Li.
 
