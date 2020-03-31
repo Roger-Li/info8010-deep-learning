@@ -2,7 +2,7 @@
 
 This document contains notes and additional readings for self-study.
 
-### [Lecture 3: Computer Vision](https://glouppe.github.io/info8010-deep-learning/?p=lecture4.md)
+### [Lecture 4: Computer Vision](https://glouppe.github.io/info8010-deep-learning/?p=lecture4.md)
 
 - Misc.
   - On cross-entropy
@@ -28,6 +28,29 @@ This document contains notes and additional readings for self-study.
     - Mask R-CNN
       - Object detection combined with mask prediction enables instance segmentation.
       - [Dive into Deep Learning - 13.8.4 Mask R-CNN](https://d2l.ai/chapter_computer-vision/rcnn.html)
+
+## [Lecture 5: Training Neural Networks](https://glouppe.github.io/info8010-deep-learning/?p=lecture5.md#1)
+- Optimizers
+  - Gradient descent
+    - GD, SGD, mini-batch SGD
+    - Rely on assumptions on 1) the magnitude of the local curvature to set the step size, and 2) *isotropy* in gradient so the step size makes sense in all directions
+  - [Wolfe conditions](https://glouppe.github.io/info8010-deep-learning/?p=lecture5.md#18) ensures that both the loss function decreases sufficiently and the slope reduces sufficiently. However, line search will be too expensive for DL, and might lead to local minimum / overfitted solution.
+  - [Momentem](https://glouppe.github.io/info8010-deep-learning/?p=lecture5.md#25)
+    - Use momentum to add inertia in the choice of the step direction
+    - [Nesterov momentem](https://glouppe.github.io/info8010-deep-learning/?p=lecture5.md#28)
+  - Adaptive learning rate: without the assumption of istropic gradient
+    - Per-parameter methods: [AdaGrad](https://glouppe.github.io/info8010-deep-learning/?p=lecture5.md#31), [RMSProp](https://glouppe.github.io/info8010-deep-learning/?p=lecture5.md#32), [Adam](https://glouppe.github.io/info8010-deep-learning/?p=lecture5.md#33)
+    - [Scheduling](https://glouppe.github.io/info8010-deep-learning/?p=lecture5.md#36)
+  - Some additional reading on optimization: [(Sebastian Ruder) An overview of gradient descent optimization algorithms](https://ruder.io/optimizing-gradient-descent/)
+- Initialization
+  - Principles
+    - Break symmetry
+    - Control variance of activation across layers during forward and backward pass
+  - Xavier initialization
+- Normalization
+  - Batch normalization
+  - Layer normalization
+
 
 ## Resrouces
 - [EPFL EE-559 – Deep Learning](https://fleuret.org/ee559/) - EE-559 "Deep Learning", taught by François Fleuret in the School of Engineering of the École Polytechnique Fédérale de Lausanne, Switzerland.
