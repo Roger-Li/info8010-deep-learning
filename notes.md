@@ -2,7 +2,7 @@
 
 This document contains notes and additional readings for self-study.
 
-### [Lecture 4: Computer Vision](https://glouppe.github.io/info8010-deep-learning/?p=lecture4.md)
+## [Lecture 4: Computer Vision](https://glouppe.github.io/info8010-deep-learning/?p=lecture4.md)
 
 - Misc.
   - On cross-entropy
@@ -92,6 +92,43 @@ with stacked, bidirectional and gated recurrent networks. ([Duyu Tang et al, 201
 - Reference
   - [Kyunghyun Cho, "Natural Language Understanding with Distributed Representation", 2015](https://arxiv.org/pdf/1511.07916.pdf)
 
+## [Lecture 7: Auto-encoders and generative models](https://glouppe.github.io/info8010-deep-learning/?p=lecture7.md#1)
+- Auto-encoders (AE)
+  - An **auto-encoder** is a composite function made of
+    - *encoder* $f$ from the original space $\mathcal{X}$ to a latent space $\mathcal{Z}$
+    - *decoder* $g$ to map back to $\mathcal{X}$
+    - such that $g \circ f$ is close to the identity on the data, i.e. $\mathbb{E}_{\mathbf{x}\sim p(\mathbf{x})}[||\mathbf{x}-g\circ f(\mathbf{x})||^2]\approx 0$
+    - Training an auto-encoder consists of minimizing this loss function to find the best parameterization of $f$ and $g$.
+  - Interpolation on latent space can be made to get an intuition of the learned latent representation.
+  - Denoising auto-encoders
+    - The goal is to optimize $h=g\circ f: \mathcal{X} \rightarrow \mathcal{X}$ such that a perturbation $\tilde{\mathbf{x}}$ is restored to $\mathbf{x}$.
+    - A weakness of denoising auto-encoder is that the posterior $p(\mathbf{x}|\tilde{\mathbf{x}})$ may be multi-modal.
+- Generative models
+  - a probabilistic model that can be used to simulate the data, $\mathbf{x} \sim p(\mathbf{x};\theta)$.
+  - Applications
+    - Supper-resolution, Compression, text-to-speech
+    - Proteomics, drug discovery, astronomy
+    - Planning, exploration, model-based RL
+  - The decoder $g$ can be assessed by introducing a density model $q$ over the latent space $\mathcal{Z}$ for sampling and mapping back into the data space $\mathcal{X}$. (e.g., Gaussian $q(\mathbf{z}) = \mathcal{N}(\hat{\mu}, \hat{\Sigma})$)
+  - Sampled and generated results are not satisfactory because the density model $p$ on the latent space is too simple and inadequate.
+- Variational inference (VI)
+  - A prescribed latent variable model that defines a joint probability $p(\mathbf{x}, \mathbf{z}) = p(\mathbf{x} | \mathbf{z})p(\mathbf{z})$
+  - Bayes rule gives $p(\mathbf{z}| \mathbf{x}) = \dfrac{p(\mathbf{x} | \mathbf{z})p(\mathbf{z})}{p(\mathbf{x})}$, which is intractable for integrating over $\mathbf{x}$.
+  - VI turns the posterior inference into an optimization problem that minimize the KL divergence between $p(\mathbf{z}|\mathbf{x})$ and the approximation $q(\mathbf{z}|\mathbf{x};\nu)$
+    - See slides [pp. 44](https://glouppe.github.io/info8010-deep-learning/?p=lecture7.md#44) - [pp.47](https://glouppe.github.io/info8010-deep-learning/?p=lecture7.md#47) for details of the KL divergence, *evidence lower bound objective* (ELBO), and the optimization setups.
+    - ELBO encourages distributions to place their mass on configurations of latent variables that explain the oberved data, and close to the prior.
+- Variational auto-encoders
+  - Variational auto-encoder is a deep latent model where 
+    - $p(\mathbf{x}|\mathbf{z};\theta)$ is parameterized with a **generative network** $\text{NN}_\theta$ (decoder) that takes input $\mathbf{z} \in \mathcal{Z}$ and outputs parameters $\phi=\text{NN}_\theta (\mathbf{z})$ to the data distribution, i.e.
+    
+    $$\mu, \sigma = \text{NN}_\theta(\mathbf{z}), \quad p(\mathbf{x}|\mathbf{z};\theta)=\mathcal{N}(\mathbf{x};\mu, \sigma^2\mathbf{I})$$
+    
+    - The approximate posterior $q(\mathbf{z}|\mathbf{x};\varphi)$ is parameterized with an **inference network** $\text{NN}_\varphi$ (encoder) that takes as input $\mathbf{x}$ and outputs parameters $\nu=\text{NN}_\varphi(x)$ to the approximate posterior. E.g.
+    
+    $$\mu, \sigma = \text{NN}_\varphi(\mathbf{x}), \quad q(\mathbf{z}|\mathbf{x};\varphi) = \mathcal{N}(\mathbf{z};\mu,\sigma^2\mathbf{I})​$$
+    
+  - We use variational inference to jointly optimize the generative and inference networks. 
+    - Doing so involves Monte Carlo integration (for computing gradients of the ELBO w.r.t. $\theta) and reparameterization trick + Monte Carlo (for computing gradients of ELBO w.r.t. $\varphi$)
 
 ## Resrouces
 - [EPFL EE-559 – Deep Learning](https://fleuret.org/ee559/) - EE-559 "Deep Learning", taught by François Fleuret in the School of Engineering of the École Polytechnique Fédérale de Lausanne, Switzerland.
