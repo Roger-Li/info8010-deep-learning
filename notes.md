@@ -130,6 +130,39 @@ with stacked, bidirectional and gated recurrent networks. ([Duyu Tang et al, 201
   - We use variational inference to jointly optimize the generative and inference networks. 
     - Doing so involves Monte Carlo integration (for computing gradients of the ELBO w.r.t. $\theta) and reparameterization trick + Monte Carlo (for computing gradients of ELBO w.r.t. $\varphi$)
 
+## [Lecture 8: Generative Adversarial Networks](https://glouppe.github.io/info8010-deep-learning/?p=lecture8.md#1)
+
+- Generative adversarial networks (GANs)
+  - Two-player game
+    - Generator network $g(\cdot;\theta):\mathcal{Z}\rightarrow\mathcal{X}$ with prior $p(\mathbf{z})$ on latent space, thereby inducing a generative distribution
+
+    $$\mathbf{x} \sim q(\mathbf{x};\theta) \iff \mathbf{z} \sim p(\mathbf{z}), \mathbf{x}=g(\mathbf{z};\theta)$$
+
+    - Discriminative network $d(\cdot;\phi):\mathcal{X}\rightarrow[0, 1]$ as a classifier to distinguish between true samples $\mathbf{x}\sim p(\mathbf{x})$ and generated samples $\mathbf{x}\sim q(\mathbf{x};\theta)$
+  - Objective of GANs
+    - Use cross-entropy loss for $d$ and we have the *value function* (log-likelihood)
+    $$V(\phi, \theta) =\mathbb{E}_{\mathbf{x}\sim p(\mathbf{x})}[\log d(\mathbf{x};\theta)] + \mathbb{E}_{\mathbf{z}\sim p(\mathbf{z})}[1-d(g(\mathbf{z};\theta);\phi))]$$
+    - The ultimate goal is $\theta^*=\arg \min_{\theta} \max_{\phi} V(\phi, \theta)$
+    - Mathematically $\theta^*$ is minimum $\iff$ $p(\mathbf{x}) = q(\mathbf{x};\theta)$, that is, the corresponding generative model can perfectly reproduce the true data distribution.
+  - Learning process
+    - Alternating SGD
+      $$\theta \leftarrow \theta - \gamma \nabla_{\theta}V(\phi, \theta); \quad \phi \leftarrow \phi - \gamma \nabla_{\phi}V(\theta, \phi)$$
+    - For each step of $\theta$ we can take $k$ steps on $\phi$ to make the classifier near optimal
+    - Computing $\nabla_{\theta}$ requres backprop through $d$ before computing the partial derivatives w.r.t. $g$'s internals.
+  - Open problems
+    - Training standard GAN often results in pathological behaviors due to
+      - Oscillations without convergence
+      - Vanishing gradients
+      - Mode collapse: $g$ models well on a small sub-population concentrating on a few modes of the data distribution.
+      - Performance diffucult to assess in practice.
+  
+ 
+ 
+- Wasserstein GANs
+- Convergence of GANs
+- State of the art
+- Applications
+
 ## Resrouces
 - [EPFL EE-559 – Deep Learning](https://fleuret.org/ee559/) - EE-559 "Deep Learning", taught by François Fleuret in the School of Engineering of the École Polytechnique Fédérale de Lausanne, Switzerland.
 - [Dive into Deep Learning](https://d2l.ai/): An interactive deep learning book with code, math, and discussions, based on the NumPy interface.
