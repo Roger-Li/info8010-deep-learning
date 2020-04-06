@@ -1,4 +1,11 @@
-# Notes on [INFO8010 - Deep Learning](https://github.com/glouppe/info8010-deep-learning)
+---
+title: "Notes on [INFO8010 - Deep Learning](https://github.com/glouppe/info8010-deep-learning)"
+author: Yuanzhe (Roger) Li
+date: 2020-04
+geometry: margin=2cm
+output: pdf_document
+---
+
 
 This document contains notes and additional readings for self-study.
 
@@ -124,11 +131,9 @@ with stacked, bidirectional and gated recurrent networks. ([Duyu Tang et al, 201
     $$\mu, \sigma = \text{NN}_\theta(\mathbf{z}), \quad p(\mathbf{x}|\mathbf{z};\theta)=\mathcal{N}(\mathbf{x};\mu, \sigma^2\mathbf{I})$$
     
     - The approximate posterior $q(\mathbf{z}|\mathbf{x};\varphi)$ is parameterized with an **inference network** $\text{NN}_\varphi$ (encoder) that takes as input $\mathbf{x}$ and outputs parameters $\nu=\text{NN}_\varphi(x)$ to the approximate posterior. E.g.
-    
-    $$\mu, \sigma = \text{NN}_\varphi(\mathbf{x}), \quad q(\mathbf{z}|\mathbf{x};\varphi) = \mathcal{N}(\mathbf{z};\mu,\sigma^2\mathbf{I})​$$
-    
+    $$\mu, \sigma = \text{NN}_\varphi(\mathbf{x}), \quad q(\mathbf{z}|\mathbf{x};\varphi) = \mathcal{N}(\mathbf{z};\mu,\sigma^2\mathbf{I})$$
   - We use variational inference to jointly optimize the generative and inference networks. 
-    - Doing so involves Monte Carlo integration (for computing gradients of the ELBO w.r.t. $\theta) and reparameterization trick + Monte Carlo (for computing gradients of ELBO w.r.t. $\varphi$)
+    - Doing so involves Monte Carlo integration (for computing gradients of the ELBO w.r.t. $\theta$) and reparameterization trick + Monte Carlo (for computing gradients of ELBO w.r.t. $\varphi$)
 
 ## [Lecture 8: Generative Adversarial Networks](https://glouppe.github.io/info8010-deep-learning/?p=lecture8.md#1)
 
@@ -154,11 +159,18 @@ with stacked, bidirectional and gated recurrent networks. ([Duyu Tang et al, 201
       - Oscillations without convergence
       - Vanishing gradients
       - Mode collapse: $g$ models well on a small sub-population concentrating on a few modes of the data distribution.
-      - Performance diffucult to assess in practice.
-  
- 
- 
+      - Performance diffucult to assess in practice. 
 - Wasserstein GANs
+  - Original GAN as defined above suffers from vanishing gradients, especially when initialy $\mathbf{x} \sim q(\mathbf{x};\theta)$ can be so bad that the response of $d$ saturates, meaning $d$ is nearly perfect there fore $V(\phi, \theta) = ... (defined above)$ has near-zero gradients which halts the optimization.
+    - One of the reason for the setback is that Jensen-SHannon divergence poorly accounts for the metric structure of the space.
+  - Wasserstein GAN uses Wasserstein-1 distance
+  $$\theta^* = \arg \min_{\theta}W_1(p(\mathbf{x}||q(\mathbf{x};\theta)) \\ 
+  =\arg\min_{\theta}\max_{\phi:||d(\cdot;\phi)||_{L}\leq 1}\mathbb{E}_{\mathbf{x}\sim p(\mathbf{x})}[d(\cdot;\phi)] - \mathbb{E}_{\mathbf{x}\sim q(\mathbf{x};\theta)[d(\mathbf{x};\theta)]}$$
+    - In this case, $d:\mathcal{X}\rightarrow\mathbb{R}$ is a critic function that satisfies 1-Lipschitzness.
+    - See [Arjovsky et al (2017)](https://arxiv.org/pdf/1701.07875.pdf) and [Gulrajani et al (2017)](https://arxiv.org/pdf/1704.00028.pdf) for details.
+  - As a result, Wasserstein GANS benefit from 
+    - A meaningful loss metric
+    - Improved stability (no mode collapse is observed)
 - Convergence of GANs
 - State of the art
 - Applications
