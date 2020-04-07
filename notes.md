@@ -172,6 +172,10 @@ with stacked, bidirectional and gated recurrent networks. ([Duyu Tang et al, 201
     - A meaningful loss metric
     - Improved stability (no mode collapse is observed)
 - Convergence of GANs
+  - TODO: this section (from pp. 39 - 54) is skipped for now, with some brief notes as follows:
+    - GANs suffer from [saddle point](https://en.wikipedia.org/wiki/Saddle_point), see [Ferenc Huszár, GANs are Broken in More than One Way, 2017](https://www.inference.vc/my-notes-on-the-numerics-of-gans/) for details
+    - The loss function of Vanilla GANs and Wisserstein GANs can be unified to analyse the convergence.
+    - Reference: [Mescheder et al, 2018. Which Training Methods for GANs do actually Converge?](https://arxiv.org/pdf/1801.04406.pdf) 
 - State of the art
 - Applications
 
