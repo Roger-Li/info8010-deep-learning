@@ -177,7 +177,33 @@ with stacked, bidirectional and gated recurrent networks. ([Duyu Tang et al, 201
     - The loss function of Vanilla GANs and Wisserstein GANs can be unified to analyse the convergence.
     - Reference: [Mescheder et al, 2018. Which Training Methods for GANs do actually Converge?](https://arxiv.org/pdf/1801.04406.pdf) 
 - State of the art
+  - Progress: Wasserstein GANs as baseline + Gradient Penalty ([Gulrajani 2017](https://arxiv.org/pdf/1704.00028.pdf)) + quite a few other tricks
+  - BigGANs
+    - [Brock et al, 2018: Large Scale GAN Training For High Fidelit Natural Image Synthes](https://arxiv.org/pdf/1809.11096.pdf)
+  - StyleGAN
+    - V1: [Karras et al, 2018](https://arxiv.org/pdf/1812.04948.pdf)
+    - V2: [Karras et al, 2019](http://openaccess.thecvf.com/content_CVPR_2019/papers/Karras_A_Style-Based_Generator_Architecture_for_Generative_Adversarial_Networks_CVPR_2019_paper.pdf)
 - Applications
+  - The prior $p(\mathbf{z})$ of the latent space need not be a random noise distribution
+  - Image-to-image translation: [CycleGANs (Zhu et al, 2017)](https://arxiv.org/pdf/1703.10593.pdf)
+  - [Nvidia: Stroke of Genius: GauGAN Turns Doodles into Stunning, Photorealistic Landscapes](https://blogs.nvidia.com/blog/2019/03/18/gaugan-photorealistic-landscapes-nvidia-research/)
+  - Captioning
+  - Text-to-image synthesis
+    - [Zhang et al, 2017: StackGAN: Text to Photo-realistic Image Synthesis with Stacked Generative Adversarial Networks](https://arxiv.org/pdf/1612.03242.pdf)
+  - Music generation
+    - [MuseGAN (Dong et al, 2018)](https://salu133445.github.io/musegan/pdf/musegan-aaai2018-paper.pdf)
+  - Accelerating scientific simulators
+    - [Learning particle physics (Paganini et al, 2017)](https://arxiv.org/pdf/1701.05927.pdf)
+    - Learning cosmological models ([Rodriguez et al, 2018](https://arxiv.org/pdf/1801.09070.pdf))
+    - Brain reading ([Shen et al, 2018](https://www.biorxiv.org/content/10.1101/272518v1))
+
+
+## Supplementary Notes
+This section contains reading notes for lecture 12 - 13 of the [EPFL EE-559 – Deep Learning](https://fleuret.org/ee559/) course as supplementary materials to the INFO8010 course.
+
+### Recurrent models and NLP
+
+### Attention models
 
 ## Resrouces
 - [EPFL EE-559 – Deep Learning](https://fleuret.org/ee559/) - EE-559 "Deep Learning", taught by François Fleuret in the School of Engineering of the École Polytechnique Fédérale de Lausanne, Switzerland.

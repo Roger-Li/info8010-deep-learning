@@ -20,9 +20,9 @@
         
         <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
     </head>
-    <body class="vscode-light">
+    <body>
         <hr>
-<h2 id="title-%22notes-on-info8010---deep-learning%22author-yuanzhe-roger-lidate-2020-04geometry-margin2cmoutput-pdfdocument">title: &quot;Notes on <a href="https://github.com/glouppe/info8010-deep-learning">INFO8010 - Deep Learning</a>&quot;
+<h2 id="title-notes-on-info8010---deep-learningauthor-yuanzhe-roger-lidate-2020-04geometry-margin2cmoutput-pdf_document">title: &quot;Notes on <a href="https://github.com/glouppe/info8010-deep-learning">INFO8010 - Deep Learning</a>&quot;
 author: Yuanzhe (Roger) Li
 date: 2020-04
 geometry: margin=2cm
@@ -363,9 +363,52 @@ with stacked, bidirectional and gated recurrent networks. (<a href="https://www.
 </li>
 </ul>
 </li>
-<li>State of the art</li>
-<li>Applications</li>
+<li>State of the art
+<ul>
+<li>Progress: Wasserstein GANs as baseline + Gradient Penalty (<a href="https://arxiv.org/pdf/1704.00028.pdf">Gulrajani 2017</a>) + quite a few other tricks</li>
+<li>BigGANs
+<ul>
+<li><a href="https://arxiv.org/pdf/1809.11096.pdf">Brock et al, 2018: Large Scale GAN Training For High Fidelit Natural Image Synthes</a></li>
 </ul>
+</li>
+<li>StyleGAN
+<ul>
+<li>V1: <a href="https://arxiv.org/pdf/1812.04948.pdf">Karras et al, 2018</a></li>
+<li>V2: <a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Karras_A_Style-Based_Generator_Architecture_for_Generative_Adversarial_Networks_CVPR_2019_paper.pdf">Karras et al, 2019</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Applications
+<ul>
+<li>The prior <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi mathvariant="bold">z</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(\mathbf{z})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">z</span></span><span class="mclose">)</span></span></span></span> of the latent space need not be a random noise distribution</li>
+<li>Image-to-image translation: <a href="https://arxiv.org/pdf/1703.10593.pdf">CycleGANs (Zhu et al, 2017)</a></li>
+<li><a href="https://blogs.nvidia.com/blog/2019/03/18/gaugan-photorealistic-landscapes-nvidia-research/">Nvidia: Stroke of Genius: GauGAN Turns Doodles into Stunning, Photorealistic Landscapes</a></li>
+<li>Captioning</li>
+<li>Text-to-image synthesis
+<ul>
+<li><a href="https://arxiv.org/pdf/1612.03242.pdf">Zhang et al, 2017: StackGAN: Text to Photo-realistic Image Synthesis with Stacked Generative Adversarial Networks</a></li>
+</ul>
+</li>
+<li>Music generation
+<ul>
+<li><a href="https://salu133445.github.io/musegan/pdf/musegan-aaai2018-paper.pdf">MuseGAN (Dong et al, 2018)</a></li>
+</ul>
+</li>
+<li>Accelerating scientific simulators
+<ul>
+<li><a href="https://arxiv.org/pdf/1701.05927.pdf">Learning particle physics (Paganini et al, 2017)</a></li>
+<li>Learning cosmological models (<a href="https://arxiv.org/pdf/1801.09070.pdf">Rodriguez et al, 2018</a>)</li>
+<li>Brain reading (<a href="https://www.biorxiv.org/content/10.1101/272518v1">Shen et al, 2018</a>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="supplementary-notes">Supplementary Notes</h2>
+<p>This section contains reading notes for lecture 12 - 13 of the <a href="https://fleuret.org/ee559/">EPFL EE-559 – Deep Learning</a> course as supplementary materials to the INFO8010 course.</p>
+<h3 id="recurrent-models-and-nlp">Recurrent models and NLP</h3>
+<h3 id="attention-models">Attention models</h3>
 <h2 id="resrouces">Resrouces</h2>
 <ul>
 <li><a href="https://fleuret.org/ee559/">EPFL EE-559 – Deep Learning</a> - EE-559 &quot;Deep Learning&quot;, taught by François Fleuret in the School of Engineering of the École Polytechnique Fédérale de Lausanne, Switzerland.</li>
