@@ -9,7 +9,7 @@ output: pdf_document
 
 This document contains notes and additional readings for self-study.
 
-## [Lecture 4: Computer Vision](https://glouppe.github.io/info8010-deep-learning/?p=lecture4.md)
+## Lecture 4: Computer Vision
 
 - Misc.
   - On cross-entropy
@@ -36,8 +36,7 @@ This document contains notes and additional readings for self-study.
       - Object detection combined with mask prediction enables instance segmentation.
       - [Dive into Deep Learning - 13.8.4 Mask R-CNN](https://d2l.ai/chapter_computer-vision/rcnn.html)
 
-## [Lecture 5: Training Neural Networks](https://glouppe.github.io/info8010-deep-learning/?p=lecture5.md#1)
-- Optimizers
+## Lecture 5: Training Neural Networks
   - Gradient descent
     - GD, SGD, mini-batch SGD
     - Rely on assumptions on 1) the magnitude of the local curvature to set the step size, and 2) *isotropy* in gradient so the step size makes sense in all directions
@@ -58,7 +57,8 @@ This document contains notes and additional readings for self-study.
   - Batch normalization
   - Layer normalization
 
-## [Lecture 6: Recurrent Neural Networks](https://glouppe.github.io/info8010-deep-learning/?p=lecture6.md#1)
+## Lecture 6: Recurrent Neural Networks
+- Some of the notes were added by reviewing [EPFL EE-559, 12.1 – Recurrent Neural Networks](https://fleuret.org/ee559/materials/ee559-slides-12-1-RNN-basics.pdf)
 - Types of tasks
   - Classification: sequence to classes
   - Synthesis: real values to sequence
@@ -66,15 +66,22 @@ This document contains notes and additional readings for self-study.
 - Temporal convolutions
 - Recurent neural networks
   - Structure
-    - maintain a recurrent state updated at each time step (a function of state the previous step, input of the current step, and weights), $\mathbf{h}_t = \phi (\mathbf{x}_t, \mathbf{h}_{t-1}; \theta)$
-    - Predictions can be computed at any step from the recurrent state $y_t = \psi(\mathbf{h}_t;\theta)$
+    - maintain a recurrent state updated at each time step (a function of state the previous step, input of the current step, and weights), $\mathbf{h}_t = \phi (\mathbf{x}_t, \mathbf{h}_{t-1}; \theta)$. So if $\mathbf{x} \in \mathbb{R}^D and h \in \mathbb{R}^Q$, then $\phi:\mathbb{R}^D \times \mathbb{R}^Q \rightarrow \mathbb{R}^Q$
+    - Predictions can be computed at any step from the recurrent state $y_t = \psi(\mathbf{h}_t;\theta)$.
+    
+      ![RNN](figures/notes/lec06_rnn.png)
+    
     - Elman netoworks apply non-linear activation functions as $\phi$ and $\psi$
+    $$h_t=\text{ReLU}(W_{x(\times h)}\mathbf{X}_t + W_{(h \times h)}h_{t-1} + b_{(h)}), \quad y_{T}=W_{(h\times y)}h_T + b_{(y)}$$
   - **Stacked RNN** 
     - Since RNNs can be viewed as layers producing sequences of activations, and can be stacked
   - **Bidirectional RNNs**. RNNs can be made *bidirectional*. run the same single direction RNN twice from both end and concatenate the states.
   - Gating
     - Similar to the skip connections in ResNet, RNN cells can inlude pass-throughs so recurrent state does not go repeatedly through a squashing non-linearity.
     - [*forget gate*](https://glouppe.github.io/info8010-deep-learning/?p=lecture6.md#27): current state update be a per-component weighted average of its previous value and a full update, with the weighting depending on input and the previous state.
+    
+    ![rnn: forget gate](figures/notes/lec06_forget_gate.png)
+  
   - LSTM is able to learn long-term dependencies, and the core idea is to use cell state and erase/update/output gates for cell state information.
     - See [Understanding LSTM Networks](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) by Colah
   - GRU (gated recurren unit) uses two (instead of three as in LSTM) gates (update/reset), and it performs similarly to LSTM but with fewer parameters (although LSTM is strictly stronger).
@@ -99,8 +106,7 @@ with stacked, bidirectional and gated recurrent networks. ([Duyu Tang et al, 201
 - Reference
   - [Kyunghyun Cho, "Natural Language Understanding with Distributed Representation", 2015](https://arxiv.org/pdf/1511.07916.pdf)
 
-## [Lecture 7: Auto-encoders and generative models](https://glouppe.github.io/info8010-deep-learning/?p=lecture7.md#1)
-- Auto-encoders (AE)
+## Lecture 7: Auto-encoders and generative models
   - An **auto-encoder** is a composite function made of
     - *encoder* $f$ from the original space $\mathcal{X}$ to a latent space $\mathcal{Z}$
     - *decoder* $g$ to map back to $\mathcal{X}$
@@ -135,7 +141,7 @@ with stacked, bidirectional and gated recurrent networks. ([Duyu Tang et al, 201
   - We use variational inference to jointly optimize the generative and inference networks. 
     - Doing so involves Monte Carlo integration (for computing gradients of the ELBO w.r.t. $\theta$) and reparameterization trick + Monte Carlo (for computing gradients of ELBO w.r.t. $\varphi$)
 
-## [Lecture 8: Generative Adversarial Networks](https://glouppe.github.io/info8010-deep-learning/?p=lecture8.md#1)
+## Lecture 8: Generative Adversarial Networks
 
 - Generative adversarial networks (GANs)
   - Two-player game
