@@ -58,7 +58,7 @@ This document contains notes and additional readings for self-study.
   - Layer normalization
 
 ## Lecture 6: Recurrent Neural Networks
-- Some of the notes were added by reviewing [EPFL EE-559, 12.1 – Recurrent Neural Networks](https://fleuret.org/ee559/materials/ee559-slides-12-1-RNN-basics.pdf)
+- Some of the notes were added by reviewing [EPFL EE-559, 12.1 – Recurrent Neural Networks](https://fleuret.org/ee559/materials/ee559-slides-12-1-RNN-basics.pdf), [12.2 LSTM and GRU](https://fleuret.org/ee559/materials/ee559-slides-12-2-LSTM-and-GRU.pdf)
 - Types of tasks
   - Classification: sequence to classes
   - Synthesis: real values to sequence
@@ -84,9 +84,23 @@ This document contains notes and additional readings for self-study.
   
   - LSTM is able to learn long-term dependencies, and the core idea is to use cell state and erase/update/output gates for cell state information.
     - See [Understanding LSTM Networks](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) by Colah
+    - Mathematical formulation of a LSTM cell 
+
+    ![lstm: math](figures/notes/lec06_lstm_math.png)
+
+    - A visualization of a (two-layer) LSTM
+
+    ![lstm: diagram](figures/notes/lec06_lstm_diagram.png)
+
+
   - GRU (gated recurren unit) uses two (instead of three as in LSTM) gates (update/reset), and it performs similarly to LSTM but with fewer parameters (although LSTM is strictly stronger).
+    - Mathematical formuation of a GRU cell
+    
+    ![GRU: math](figures/notes/lec06_gru_math.png)
+  
   - Graident
     - Note that gated units prevent gradients from vanishing, but not from exploding, which can be solved using **gradient norm clipping** (scaling of the norm).
+    $$\tilde{\triangledown f} = \dfrac{\triangledown f}{||\triangledown f||}\min(||\triangledown f||, \delta)$$
     - Orthogonal initialization (of the weight matrix) will guarantee that activations will neigher vanish nore explode.
 - Applications
   - Sentiment analysis
