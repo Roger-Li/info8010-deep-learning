@@ -245,6 +245,30 @@ This section contains reading notes for lecture 12 - 13 of the [EPFL EE-559 – 
     - Evaluation standard: **BLEU** (bilingual evaluation understudy) score that counts the fraction of groups ofone, two, three and four words (aka “n-grams”) from the generated sentencethat appear in the reference translations.
 
 ### Attention models
+  - [13.1 Attention Mechanisms](https://fleuret.org/ee559/materials/ee559-slides-13-1-attention.pdf)
+    - On a high level, attention mechanisms aggregate features with an importance score that 
+      - depends on the feature themselves, not only on their position in the tensor
+      - relax locality constraints
+    - In **spatial attention**, the contribution of input to aggregated information is driven by their location, as shown by an example of average pooling below:
+      - With 1-D convolutional map $x \in \mathbb{R}^{T\times D}$, 
+      - average pooling computes $y_j = \sum_{i=1}^T\dfrac{\mathbf{1}_{|j-i|\leq \triangle}}{\sum_k \mathbf{1}_{|j-i|\leq \triangle}}x_i$ 
+    - **Context attention**
+  
+      ![context attention formula](figures/notes/context_attention_math.png)
+    
+    - **Self-attention** is a special case of context attention, where the importance of $x_i$ in computing $y_j$ depends on $x_i$ and $x_j$
+      - $y_j = \sum_{i=1}^T\text{softmax}_i(a(x_i,x_j;\theta))x_i$
+    - The most standard approaches for attention function is dot-product, $a(x;V)=x^TV$, or $a(x,x';W,W')=(Wx)^T(W'x')$ for self-attention. However $a(\cdot)$ can take any form.
+    - Attention for seq2seq
+      - Recap of seq2seq
+
+      ![A recap of seq2seq](figures/notes/seq2seq_recap.png)
+
+      - The main weakness of vanilla seq2seq is that all the information has to flow through a single state $v=h_T$, whose capacity has to accommodate any situation.
+      - Attention mechanism adds channels to transport local information from the input sequence to the place where it is useful in the resulting sequence. 
+      - The following diagram is based on [Bahdanau et al., 2014](https://arxiv.org/abs/1409.0473).
+
+      ![seq2seq with attentinon](figures/notes/seq2seq_with_attention.png) 
 
 ## Resrouces
 - [EPFL EE-559 – Deep Learning](https://fleuret.org/ee559/) - EE-559 "Deep Learning", taught by François Fleuret in the School of Engineering of the École Polytechnique Fédérale de Lausanne, Switzerland.
