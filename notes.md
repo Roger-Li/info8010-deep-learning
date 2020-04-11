@@ -15,6 +15,7 @@ This document contains notes and additional readings for self-study.
   - On cross-entropy
     - [(Wiki page) Cross Entropy](https://en.wikipedia.org/wiki/Cross_entropy)
     - [A Gentle Introduction to Cross-Entropy for Machine Learning](https://machinelearningmastery.com/cross-entropy-for-machine-learning/)
+    - [Liangjie Hong: Notes on Logistic Loss Function](http://www.hongliangjie.com/wp-content/uploads/2011/10/logistic.pdf)
 - Classification
   - Image augmentation
   - Use pre-trained models for fine tuning and transfer learning
@@ -222,6 +223,26 @@ with stacked, bidirectional and gated recurrent networks. ([Duyu Tang et al, 201
 This section contains reading notes for lecture 12 - 13 of the [EPFL EE-559 – Deep Learning](https://fleuret.org/ee559/) course as supplementary materials to the INFO8010 course.
 
 ### Recurrent models and NLP
+
+- [12.3. Word embeddings and translation](https://fleuret.org/ee559/materials/ee559-slides-12-3-word-embeddings-and-translation.pdf)
+  - Motivation: To devise a proper density model for sequence of words when vocabularies are usually of the order of $10^4 - 10^6$ words, a standard strategy is to embed words into a geometrical space and exploit regularities for further statistical modeling.
+  - Continuous Bag of Words (CBOW, Mikolov et al., 2013a)
+    - In this model, the embedding vectors are chosen so that a word can be[linearly] predicted from the sum of the embeddings of words around it.
+    - Negative sampling on the correct class and randomly sample the incorrect classes.
+  
+    ![CWOB example](figures/notes/word_embedding_cwob.png)
+    
+    - Uses (variant of) logistic loss
+  - Skip-gram
+    - Optimizes the embedding so that a word can be predicted by any individual word in its context.
+  
+    ![Skip gram diagram](figures/notes/word_embedding_skip_gram.png)
+    
+  - Sequence-to-sequence translation
+    - Diagram
+      
+      ![seq2seq translation](figures/notes/seq2seq_translation.png)
+    - Evaluation standard: **BLEU** (bilingual evaluation understudy) score that counts the fraction of groups ofone, two, three and four words (aka “n-grams”) from the generated sentencethat appear in the reference translations.
 
 ### Attention models
 
