@@ -225,12 +225,14 @@ This section contains reading notes for lecture 12 - 13 of the [EPFL EE-559 – 
 ### Recurrent models and NLP
 
 - [12.3. Word embeddings and translation](https://fleuret.org/ee559/materials/ee559-slides-12-3-word-embeddings-and-translation.pdf)
-  - Motivation: To devise a proper density model for sequence of words when vocabularies are usually of the order of $10^4 - 10^6$ words, a standard strategy is to embed words into a geometrical space and exploit regularities for further statistical modeling.
+  - Motivation: To devise a proper density model for sequence of words when vocabularies are usually of the order of $10^4 - 10^6$ words, 
+    - A standard strategy is to embed words into a geometrical space and exploit regularities for further statistical modeling.
+    - The geometry after embedding should account for synonymy and similarities of the original words.
   - Continuous Bag of Words (CBOW, Mikolov et al., 2013a)
-    - In this model, the embedding vectors are chosen so that a word can be[linearly] predicted from the sum of the embeddings of words around it.
+    - In this model, the embedding vectors are chosen so that a word can be [linearly] predicted from the sum of the embeddings of words around it.
     - Negative sampling on the correct class and randomly sample the incorrect classes.
   
-    ![CWOB example](figures/notes/word_embedding_cwob.png)
+      ![CWOB example](figures/notes/word_embedding_cwob.png)
     
     - Uses (variant of) logistic loss
   - Skip-gram
@@ -242,7 +244,7 @@ This section contains reading notes for lecture 12 - 13 of the [EPFL EE-559 – 
     - Diagram
       
       ![seq2seq translation](figures/notes/seq2seq_translation.png)
-    - Evaluation standard: **BLEU** (bilingual evaluation understudy) score that counts the fraction of groups ofone, two, three and four words (aka “n-grams”) from the generated sentencethat appear in the reference translations.
+    - Evaluation standard: **BLEU** (bilingual evaluation understudy) score that counts the fraction of groups of one, two, three and four words (aka “n-grams”) from the generated sentence that appear in the reference translations.
 
 ### Attention models
   - [13.1 Attention Mechanisms](https://fleuret.org/ee559/materials/ee559-slides-13-1-attention.pdf)
@@ -270,7 +272,14 @@ This section contains reading notes for lecture 12 - 13 of the [EPFL EE-559 – 
 
       ![seq2seq with attentinon](figures/notes/seq2seq_with_attention.png) 
 
-## Resrouces
+## References
+#### Course materials
 - [EPFL EE-559 – Deep Learning](https://fleuret.org/ee559/) - EE-559 "Deep Learning", taught by François Fleuret in the School of Engineering of the École Polytechnique Fédérale de Lausanne, Switzerland.
 - [Dive into Deep Learning](https://d2l.ai/): An interactive deep learning book with code, math, and discussions, based on the NumPy interface.
 - [Notes of deep learning specialization](https://github.com/mbadry1/DeepLearning.ai-Summary), good for reviewing the fundamentals of DL.
+
+#### On Word Embedding
+- [Lil'Log - Learning Word Embedding](https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html). The article covers Context-Based Vector Models (i.e., Skip-Gram, CWOB, GloVe), their schematic setups, loss functions, and tips and tricks for training such as negative sampling. Finally, the author also includes an example using the `nltk` and `gensim` package.
+- [`word2vec` Parameter Learning Explained](https://arxiv.org/pdf/1411.2738.pdf). Xin Rong's tutorial paper, which is also a reference of the Lil's blog article. The tutorial provides detailed derivations and explanations of the parameter update equations of the word2vec models (Skip-Gram, CWOB) as well as optimization techniques (hierachical softmax, negative sampling).
+- Pytorch tutorial on Word Embedding ([Link](https://pytorch.org/tutorials/beginner/nlp/word_embeddings_tutorial.html)).
+

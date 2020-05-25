@@ -5,3 +5,7 @@
 
 # Ignore some large pickle files
 *tutorials/lecture_02/pretrained_model/
+
+
+# Ignore lecture video files
+*videos/
