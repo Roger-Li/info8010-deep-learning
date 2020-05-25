@@ -13,6 +13,14 @@ Prof. Gilles Louppe<br>
 R: reading assingment:http://web.stanford.edu/class/cs224n/project/project-proposal-instructions.pdf
 R: https://www.cs.toronto.edu/~duvenaud/courses/csc2541/index.html projects
 
+
+R: add overview maps for each lecture, as in INFO8002
+R: lec10 on RL -> restructure partly as a lecture on World Models -> nice comprehensive pedagogical example (combine mdn, rnn, vae, rl) into a big network
+R: lec - theory of DL -> universal approx theorem, double descent
+
+
+R: projects -> use github classroom https://classroom.github.com/
+
 ---
 
 # AI at ULiège

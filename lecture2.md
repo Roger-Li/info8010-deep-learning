@@ -6,11 +6,13 @@ Lecture 2: Neural networks
 
 <br><br>
 Prof. Gilles Louppe<br>
-[g.louppe@uliege.be](g.louppe@uliege.be)
+[g.louppe@uliege.be](mailto:g.louppe@uliege.be)
 
 ???
 
 R: regenerate all svg files from draw.io
+
+R: backprop -> check https://mathematical-tours.github.io/book-sources/optim-ml/OptimML.pdf
 
 ---
 
