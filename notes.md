@@ -247,7 +247,7 @@ This section contains reading notes for lecture 12 - 13 of the [EPFL EE-559 – 
     - Evaluation standard: **BLEU** (bilingual evaluation understudy) score that counts the fraction of groups of one, two, three and four words (aka “n-grams”) from the generated sentence that appear in the reference translations.
 
 ### Attention models
-  - [13.1 Attention Mechanisms](https://fleuret.org/ee559/materials/ee559-slides-13-1-attention.pdf)
+  - [13.1. Attention for Memory and Sequence Translation](https://fleuret.org/ee559/materials/ee559-slides-13-1-attention-memory-translation.pdf)
     - On a high level, attention mechanisms aggregate features with an importance score that 
       - depends on the feature themselves, not only on their position in the tensor
       - relax locality constraints
